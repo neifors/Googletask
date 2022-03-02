@@ -65,12 +65,13 @@ document.getElementById("main-form").addEventListener("submit", event => {
       } catch(err) {
          console.log(err)
       }
-   }
+   
    /* Now we have to hide the main form and show everything was hide before */
    mainPage.classList.add("hide")
    resultsNavbar.classList.remove("hide")
    line.classList.remove("hide")
    resultsMain.classList.remove("hide")
+   }
 })
 
 

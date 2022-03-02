@@ -20,7 +20,7 @@ router.get('/:keyword', (req, res) => {
     }
 });
 
-router.get('/:keyword/random', (req, res) => {
+router.get('/random/:keyword', (req, res) => {
     try {
         const searchKeyword = req.params.keyword;
         const searchedItem = Result.findByKeyword(searchKeyword)

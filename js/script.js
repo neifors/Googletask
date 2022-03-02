@@ -3,17 +3,18 @@ const resultsNavbar = document.getElementById("results-navbar")
 const line = document.querySelector("hr")
 const resultsMain = document.getElementById("results-main")
 const navbarInput = document.querySelector(".navbar-input")
+let apiAddress;
 
 
 /* If click on normal search google, we are going to scrap our results API 
 in a differen address than if we press the lucky buttom */
 
 document.getElementById("submit-search").addEventListener("click", event => {
-   const apiAddress = "http://localhost:3000/google/"
+   apiAddress = "http://localhost:3000/google/"
 })
 
 document.getElementById("lucky-search").addEventListener("click", event => {
-   const apiAddress = "http://localhost:3000/google/random/"
+   apiAddress = "http://localhost:3000/google/random/"
 })
 
 
@@ -26,22 +27,41 @@ document.getElementById("main-form").addEventListener("submit", event => {
    event.preventDefault()
 
    const searchValue = event.target["search"].value
-   console.log(searchValue)
 
-   /* Fetch the API to get the results */
-   try{
-      fetch(`${apiAddress}${searchValue}/`)
-         .then( (response) => {
-            return response.json() })
-         .then( (data) => {
-            console.log(data)
-            fillResults(data);
-         })
-         .catch( (err) => {
-            console.log(err);
-         });
-   } catch(err) {
-      console.log(err)
+   const arr = apiAddress.split("/")
+   if (arr[arr.length - 2] === "random") {
+
+      try{
+         fetch(`${apiAddress}${searchValue}/`)
+            .then( (response) => {
+               return response.json() })
+            .then( (data) => {
+               console.log(data)
+               window.open(`${data.url}`)
+            })
+            .catch( (err) => {
+               console.log(err);
+            });
+      } catch(err) {
+         console.log(err)
+      }
+
+   } else {
+
+      /* Fetch the API to get the results */
+      try{
+         fetch(`${apiAddress}${searchValue}/`)
+            .then( (response) => {
+               return response.json() })
+            .then( (data) => {
+               fillResults(data);
+            })
+            .catch( (err) => {
+               console.log(err);
+            });
+      } catch(err) {
+         console.log(err)
+      }
    }
    /* Now we have to hide the main form and show everything was hide before */
    mainPage.classList.add("hide")
@@ -70,6 +90,7 @@ document.getElementById("secondary-form").addEventListener( "submit", event => {
    // to avoid the page refresh after submit
    event.preventDefault();
 
+
    const searchValue = event.target["navbar-search"].value;
    console.log(searchValue);
 
@@ -79,7 +100,7 @@ document.getElementById("secondary-form").addEventListener( "submit", event => {
          .then( (response) => {
             return response.json() })
          .then( (data) => {
-            console.log(data)
+            document.getElementById("toBeFilled").innerHTML = ""
             fillResults(data);
          })
          .catch( (err) => {
@@ -102,7 +123,6 @@ navbarInput.addEventListener("mouseout", event => {
 
 const fillResults = data => {
 /* Function to place the results fetched from the API into our html results view */
-
    for (let result of data){
    /* INSIDE #toBeFilled */
    // Create a <li>

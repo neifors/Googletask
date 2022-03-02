@@ -49,6 +49,7 @@ header {
     width: 700px;
     height: 50px;
     box-shadow: 3px 3px 5px rgba(128, 128, 128, 0.452);
+    padding-left: 20px;
 }
 
 header nav ul li {

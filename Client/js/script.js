@@ -36,11 +36,12 @@ document.getElementById("main-form").addEventListener("submit", event => {
             .then( (response) => {
                return response.json() })
             .then( (data) => {
-               console.log(data)
+               document.getElementById("toBeFilled").innerHTML = ""
                window.open(`${data.url}`)
             })
             .catch( (err) => {
-               console.log(err);
+               document.getElementById("toBeFilled").innerHTML = ""
+               displayError("Sorry your search has no results")
             });
       } catch(err) {
          console.log(err)
@@ -54,10 +55,12 @@ document.getElementById("main-form").addEventListener("submit", event => {
             .then( (response) => {
                return response.json() })
             .then( (data) => {
+               document.getElementById("toBeFilled").innerHTML = ""
                fillResults(data);
             })
             .catch( (err) => {
-               console.log(err);
+               document.getElementById("toBeFilled").innerHTML = ""
+               displayError("Sorry your search has no results")
             });
       } catch(err) {
          console.log(err)
@@ -74,6 +77,7 @@ document.getElementById("main-form").addEventListener("submit", event => {
 /* When click on the logo at top of the page, reset the "hide" class to show again the main page */
 document.getElementById("navbar-logo").addEventListener("click", event => {
 
+   window.location.reload()
    mainPage.classList.remove("hide")
    resultsNavbar.classList.add("hide")
    line.classList.add("hide")
@@ -104,7 +108,8 @@ document.getElementById("secondary-form").addEventListener( "submit", event => {
             fillResults(data);
          })
          .catch( (err) => {
-            console.log(err);
+            document.getElementById("toBeFilled").innerHTML = ""
+            displayError("Sorry your search has no results")
          });
    } catch(err) {
       console.log(err)
@@ -147,4 +152,14 @@ const fillResults = data => {
       ul. appendChild(li);
    }
 }
+const displayError = message => {
+   const ul = document.getElementById("toBeFilled");
+   const li = document.createElement("li");
+   const h2 = document.createElement("h2")
+   const error = document.createTextNode(`${message}`);
+   h2.appendChild(error)
+   li.appendChild(h2);
+   ul.appendChild(li);
+}
+
 

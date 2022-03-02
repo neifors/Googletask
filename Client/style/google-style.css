@@ -88,3 +88,9 @@ input.shadow {
 header#results-navbar.hide, div#homepage-form.hide, hr.hide, main#results-main.hide{
     display: none;
 }
+
+ul li h2 {
+    font-size: 50px;
+    text-align: center;
+    padding-top: 25%;
+}

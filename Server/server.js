@@ -6,7 +6,7 @@ const server = express();
 server.use(bodyParser.json())
 server.use(cors())
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const googleRoutes = require('./controllers/controllers');
 server.use('/google', googleRoutes);

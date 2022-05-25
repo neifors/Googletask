@@ -10,11 +10,11 @@ let apiAddress;
 in a differen address than if we press the lucky buttom */
 
 document.getElementById("submit-search").addEventListener("click", event => {
-   apiAddress = "http://localhost:3000/google/"
+   apiAddress = "https://google-task-server.herokuapp.com/google"
 })
 
 document.getElementById("lucky-search").addEventListener("click", event => {
-   apiAddress = "http://localhost:3000/google/random/"
+   apiAddress = "https://google-task-server.herokuapp.com/google/random/"
 })
 
 
@@ -22,7 +22,6 @@ document.getElementById("lucky-search").addEventListener("click", event => {
 it will show the results page and hide the main form of the homepage*/
 document.getElementById("main-form").addEventListener("submit", event => {
 
-   console.log("It's detecting the submit event")
    // to avoid the page refresh after submit
    event.preventDefault()
 

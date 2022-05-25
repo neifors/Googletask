@@ -3,7 +3,8 @@ const searchData = require('../data')
 class Result {
     constructor(data) {
         this.keywords = data.keywords;
-        this.name = data.name;
+        this.title = data.title;
+        this.description = data.description;
         this.url = data.url;
     }
 

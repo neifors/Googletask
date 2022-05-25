@@ -10,7 +10,7 @@ let apiAddress;
 in a differen address than if we press the lucky buttom */
 
 document.getElementById("submit-search").addEventListener("click", event => {
-   apiAddress = "https://google-task-server.herokuapp.com/google"
+   apiAddress = "https://google-task-server.herokuapp.com/google/"
 })
 
 document.getElementById("lucky-search").addEventListener("click", event => {
@@ -90,13 +90,10 @@ document.getElementById("navbar-logo").addEventListener("click", event => {
 with no need to come back to the homepage */
 document.getElementById("secondary-form").addEventListener( "submit", event => {
 
-   console.log("It's detecting the submit event");
    // to avoid the page refresh after submit
    event.preventDefault();
 
-
    const searchValue = event.target["navbar-search"].value;
-   console.log(searchValue);
 
    /* Fetch the API to get the results */
    try{

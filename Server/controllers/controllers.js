@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const searchData = require('../../data')
+const searchData = require('../data')
 
-const Result = require('../models')
+const Result = require('../models/models')
 
 router.get('/', (req, res) => {
     res.send(searchData.searchList)

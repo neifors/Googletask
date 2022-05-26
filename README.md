@@ -4,7 +4,7 @@
 
 - This is an imitation of a google search page. You can type a key word into the search bar (based on animals, try fluffy or pet for example) and it will look through our database and return results on a page for you. If you would like you can try the get lucky button which will take you straight to an external page based on your search. However, this is random and we cannot guarantee what you'll find. If your searchword isn't in our database, you will get an error.
 
-- For this project we used express.js mostly for the server side and bootstrap and VanillaJS for the client side.
+- For this project we used express.js mostly for the server side and plain CSS and VanillaJS for the client side.
 
 - Some of the challenges we had was trying to use a single form to submit the searchword for both the results page and the get lucky button but we fixed that relatively quickly. Also, a few server side issues to get random results using .filter and .some but also found solutions for those.
 
